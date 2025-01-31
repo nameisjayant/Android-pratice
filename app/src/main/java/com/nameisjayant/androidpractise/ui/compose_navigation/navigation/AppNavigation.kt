@@ -1,6 +1,7 @@
 package com.nameisjayant.androidpractise.ui.compose_navigation.navigation
 
 import android.os.Parcelable
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
@@ -30,6 +31,8 @@ data class PersonData(
     val age: Int
 ) : Parcelable
 
+@Serializable
+data object SecondRoute
 
 @Composable
 fun AppNavigation(
@@ -41,17 +44,18 @@ fun AppNavigation(
         modifier = modifier
     ) {
         composable<FirstScreen>(
-            deepLinks = listOf(navDeepLink {
-                uriPattern = "my-app://detail/{id}"
-            })
+            deepLinks = listOf(navDeepLink<FirstScreen>("my-app://"))
         ) {
             HomeNavigationScreen()
         }
+        composable<SecondRoute>(
+            deepLinks = listOf(navDeepLink<SecondRoute>("my-app://second"))
+        ) {
+            Text(text = "Hello Second Screen")
+        }
         composable<DetailScreen>(
-//            deepLinks = listOf(navDeepLink {
-//                uriPattern = "my-app://detail/{id}"
-//            }) ,
-            typeMap = mapOf(typeOf<List<PersonData>>() to NavigationHelpers.parcelableListType<PersonData>())
+            typeMap = mapOf(typeOf<List<PersonData>>() to NavigationHelpers.parcelableListType<PersonData>()),
+            //   deepLinks = listOf(navDeepLink<DetailScreen>("my-app://detail/{id}")),
         ) {
             val data = it.toRoute<DetailScreen>()
             NavigationDetailScreen(
