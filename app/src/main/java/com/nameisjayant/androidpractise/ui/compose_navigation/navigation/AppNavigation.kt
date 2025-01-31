@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navDeepLink
 import androidx.navigation.toRoute
 import com.nameisjayant.androidpractise.LocalNavigator
 import com.nameisjayant.androidpractise.ui.compose_navigation.screens.HomeNavigationScreen
@@ -39,10 +40,17 @@ fun AppNavigation(
         startDestination = FirstScreen,
         modifier = modifier
     ) {
-        composable<FirstScreen> {
+        composable<FirstScreen>(
+            deepLinks = listOf(navDeepLink {
+                uriPattern = "my-app://detail/{id}"
+            })
+        ) {
             HomeNavigationScreen()
         }
         composable<DetailScreen>(
+//            deepLinks = listOf(navDeepLink {
+//                uriPattern = "my-app://detail/{id}"
+//            }) ,
             typeMap = mapOf(typeOf<List<PersonData>>() to NavigationHelpers.parcelableListType<PersonData>())
         ) {
             val data = it.toRoute<DetailScreen>()
