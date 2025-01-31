@@ -4,6 +4,7 @@ import android.os.Parcelable
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navDeepLink
@@ -34,6 +35,11 @@ data class PersonData(
 @Serializable
 data object SecondRoute
 
+@Serializable
+data class ThirdScreen(
+    val id: Int
+)
+
 @Composable
 fun AppNavigation(
     modifier: Modifier = Modifier
@@ -53,9 +59,20 @@ fun AppNavigation(
         ) {
             Text(text = "Hello Second Screen")
         }
+        composable<ThirdScreen>(
+            deepLinks = listOf(navDeepLink<ThirdScreen>("my-app://third"))
+        ) {
+
+            Text(text = "Hello Third Screen ${it.toRoute<ThirdScreen>().id}", color = Color.Red)
+        }
         composable<DetailScreen>(
             typeMap = mapOf(typeOf<List<PersonData>>() to NavigationHelpers.parcelableListType<PersonData>()),
-            //   deepLinks = listOf(navDeepLink<DetailScreen>("my-app://detail/{id}")),
+            deepLinks = listOf(
+                navDeepLink<DetailScreen>(
+                    "my-app://detail",
+                    typeMap = mapOf(typeOf<List<PersonData>>() to NavigationHelpers.parcelableListType<PersonData>()),
+                )
+            ),
         ) {
             val data = it.toRoute<DetailScreen>()
             NavigationDetailScreen(
