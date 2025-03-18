@@ -40,6 +40,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.nameisjayant.androidpractise.ui.animations.AnimationAsColorScreen
+import com.nameisjayant.androidpractise.ui.animations.AnimationAsDpScreen
+import com.nameisjayant.androidpractise.ui.animations.KeyframeAnimationScreen
+import com.nameisjayant.androidpractise.ui.animations.TransitionAnimationScreen
 import com.nameisjayant.androidpractise.ui.compose.CustomSwitchScreen
 import com.nameisjayant.androidpractise.ui.compose.GraphicLayerAlpha
 import com.nameisjayant.androidpractise.ui.compose.GraphicLayerBlur
@@ -77,7 +81,7 @@ class MainActivity : ComponentActivity() {
                     CompositionLocalProvider(
                         LocalNavigator provides navHostController
                     ) {
-                        CustomSwitchScreen(
+                        KeyframeAnimationScreen(
                             modifier = Modifier.padding(innerPadding)
                         )
                     }
