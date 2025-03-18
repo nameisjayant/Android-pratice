@@ -2,8 +2,10 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.compose.compiler)
-    id("org.jetbrains.kotlin.plugin.serialization")
     id("kotlin-parcelize")
+    alias(libs.plugins.kotlin.serializable.pulgin)
+    // ksp plugin
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -72,4 +74,7 @@ dependencies {
 
     implementation(libs.navigation.compose)
     implementation(libs.kotlin.serializable)
+
+    implementation(libs.room.runtime)
+    ksp(libs.room.compiler)
 }

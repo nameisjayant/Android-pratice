@@ -50,6 +50,4 @@ object NavigationHelpers {
 
         override fun put(bundle: Bundle, key: String, value: T) = bundle.putParcelable(key, value)
     }
-
-
 }

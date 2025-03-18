@@ -10,8 +10,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.nameisjayant.androidpractise.LocalNavigator
 import com.nameisjayant.androidpractise.R
-import com.nameisjayant.androidpractise.ui.compose_navigation.navigation.DetailScreen
 import com.nameisjayant.androidpractise.ui.compose_navigation.navigation.PersonData
+import com.nameisjayant.androidpractise.ui.compose_navigation.navigation.SecondRoute
 
 @Composable
 fun HomeNavigationScreen(
@@ -178,11 +178,19 @@ fun HomeNavigationScreen(
     ) {
         Button(onClick = {
             navigator.navigate(
-                DetailScreen(
-                    data, listOf(
+                SecondRoute(
+                    data = PersonData(
+                        name = "Jayant",
+                        age = 26
+                    ),
+                    list = listOf(
                         PersonData(
                             name = "Jayant",
-                            age = 25
+                            age = 26
+                        ),
+                        PersonData(
+                            name = "Mayank",
+                            age = 30
                         )
                     )
                 )
