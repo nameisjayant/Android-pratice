@@ -52,7 +52,6 @@ fun AnimationAsDpScreen(
                 isExpand = !isExpand
             })
     }
-
 }
 
 @Composable
@@ -82,7 +81,6 @@ fun AnimationAsColorScreen(
                 isExpand = !isExpand
             })
     }
-
 }
 
 @Composable
@@ -144,9 +142,9 @@ fun AnimationSpecsScreen(
     modifier: Modifier = Modifier
 ) {
     val tweenAnimation = tween<Dp>(
-        1000,
-        100,
-        LinearEasing
+        durationMillis = 1000,
+        delayMillis = 100,
+        easing = LinearEasing
     )
 
     val springAnimation = spring<Dp>(

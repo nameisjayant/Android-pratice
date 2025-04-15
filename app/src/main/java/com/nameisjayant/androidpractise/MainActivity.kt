@@ -25,7 +25,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Modifier
@@ -40,28 +39,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.nameisjayant.androidpractise.ui.animations.AnimationAsColorScreen
-import com.nameisjayant.androidpractise.ui.animations.AnimationAsDpScreen
-import com.nameisjayant.androidpractise.ui.animations.KeyframeAnimationScreen
-import com.nameisjayant.androidpractise.ui.animations.TransitionAnimationScreen
-import com.nameisjayant.androidpractise.ui.compose.CustomSwitchScreen
-import com.nameisjayant.androidpractise.ui.compose.GraphicLayerAlpha
-import com.nameisjayant.androidpractise.ui.compose.GraphicLayerBlur
-import com.nameisjayant.androidpractise.ui.compose.GraphicLayerCameraDistance
-import com.nameisjayant.androidpractise.ui.compose.GraphicLayerClip
-import com.nameisjayant.androidpractise.ui.compose.GraphicLayerFlip
-import com.nameisjayant.androidpractise.ui.compose.GraphicLayerRotation
-import com.nameisjayant.androidpractise.ui.compose.GraphicLayerScaling
-import com.nameisjayant.androidpractise.ui.compose.GraphicLayerShadow
-import com.nameisjayant.androidpractise.ui.compose.GraphicLayerTranslation
-import com.nameisjayant.androidpractise.ui.compose.PointerInputDragGesture
-import com.nameisjayant.androidpractise.ui.compose.PointerInputDragGestureAfterLongPress
-import com.nameisjayant.androidpractise.ui.compose.PointerInputDragHorizontalGesture
-import com.nameisjayant.androidpractise.ui.compose.PointerInputDragVerticalGesture
-import com.nameisjayant.androidpractise.ui.compose.PointerInputTapGesture
-import com.nameisjayant.androidpractise.ui.compose.PointerInputTransformGesture
-import com.nameisjayant.androidpractise.ui.compose.PreviewScrollableTable
-import com.nameisjayant.androidpractise.ui.compose_navigation.navigation.AppNavigationScreen
+import com.nameisjayant.androidpractise.ui.compose.ModifierScreen
 import com.nameisjayant.androidpractise.ui.theme.AndroidPractiseTheme
 
 class MainActivity : ComponentActivity() {
@@ -78,13 +56,9 @@ class MainActivity : ComponentActivity() {
             AndroidPractiseTheme {
                 val navHostController = rememberNavController()
                 Scaffold { innerPadding ->
-                    CompositionLocalProvider(
-                        LocalNavigator provides navHostController
-                    ) {
-                        KeyframeAnimationScreen(
-                            modifier = Modifier.padding(innerPadding)
-                        )
-                    }
+                    ModifierScreen(
+                        modifier = Modifier.padding(innerPadding)
+                    )
                 }
             }
         }

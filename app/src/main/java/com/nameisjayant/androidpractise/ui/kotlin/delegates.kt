@@ -43,9 +43,6 @@ class LoggingDelegates {
 
 }
 
-class User {
-    val username:String by LoggingDelegates()
-}
 
 
 fun interface Printer1{

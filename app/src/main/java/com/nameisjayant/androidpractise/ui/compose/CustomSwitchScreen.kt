@@ -25,6 +25,9 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 
+inline val String.stringState
+    @Composable get() = remember { mutableStateOf(this) }
+
 
 @Composable
 fun CustomSwitchScreen(
