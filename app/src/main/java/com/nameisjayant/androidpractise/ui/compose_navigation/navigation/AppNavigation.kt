@@ -2,6 +2,8 @@ package com.nameisjayant.androidpractise.ui.compose_navigation.navigation
 
 import android.os.Parcelable
 import android.util.Log
+import androidx.compose.animation.ExperimentalSharedTransitionApi
+import androidx.compose.animation.SharedTransitionLayout
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -48,29 +50,32 @@ data class ThirdScreen(
     val id: Int
 )
 
+@OptIn(ExperimentalSharedTransitionApi::class)
 @Composable
 fun AppNavigationScreen(
     modifier: Modifier = Modifier
 ) {
 
-    NavHost(
-        navController = LocalNavigator.current,
-        startDestination = FirstRoute,
-        modifier = modifier
-    ) {
-        composable<FirstRoute> {
-            HomeNavigationScreen()
-        }
-        composable<SecondRoute>(
-            typeMap = mapOf(
-                typeOf<PersonData>() to NavigationHelpers.parcelableType<PersonData>(),
-                typeOf<List<PersonData>>() to NavigationHelpers.parcelableListType<PersonData>(),
-            )
-        ) { navBackStackEntry ->
-            val data = navBackStackEntry.toRoute<SecondRoute>().list
-            NavigationDetailScreen(
-                data = data
-            )
+    SharedTransitionLayout{
+        NavHost(
+            navController = LocalNavigator.current,
+            startDestination = FirstRoute,
+            modifier = modifier
+        ) {
+            composable<FirstRoute> {
+                HomeNavigationScreen()
+            }
+            composable<SecondRoute>(
+                typeMap = mapOf(
+                    typeOf<PersonData>() to NavigationHelpers.parcelableType<PersonData>(),
+                    typeOf<List<PersonData>>() to NavigationHelpers.parcelableListType<PersonData>(),
+                )
+            ) { navBackStackEntry ->
+                val data = navBackStackEntry.toRoute<SecondRoute>().list
+                NavigationDetailScreen(
+                    data = data
+                )
+            }
         }
     }
 }

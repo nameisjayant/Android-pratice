@@ -25,6 +25,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Modifier
@@ -39,7 +40,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.nameisjayant.androidpractise.ui.compose.ModifierScreen
+import com.nameisjayant.androidpractise.ui.compose.AutoFillScreen
+import com.nameisjayant.androidpractise.ui.compose.BasicBuildAnnotated
+import com.nameisjayant.androidpractise.ui.compose.ClickableTextScreen
+import com.nameisjayant.androidpractise.ui.compose.TooltipScreen
 import com.nameisjayant.androidpractise.ui.theme.AndroidPractiseTheme
 
 class MainActivity : ComponentActivity() {
@@ -56,9 +60,13 @@ class MainActivity : ComponentActivity() {
             AndroidPractiseTheme {
                 val navHostController = rememberNavController()
                 Scaffold { innerPadding ->
-                    ModifierScreen(
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    CompositionLocalProvider(
+                        LocalNavigator provides navHostController
+                    ) {
+                        BasicBuildAnnotated(
+                            modifier = Modifier.padding(innerPadding)
+                        )
+                    }
                 }
             }
         }

@@ -1,11 +1,13 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.compose.compiler)
     id("kotlin-parcelize")
     alias(libs.plugins.kotlin.serializable.pulgin)
-    // ksp plugin
     alias(libs.plugins.ksp)
+//    alias(libs.plugins.dagger.hilt)
 }
 
 android {
@@ -75,6 +77,18 @@ dependencies {
     implementation(libs.navigation.compose)
     implementation(libs.kotlin.serializable)
 
+    implementation(libs.coroutine.android)
+    implementation(libs.coroutine.core)
+
+//    implementation(libs.dagger.hilt.android)
+//    implementation(libs.dagger.hilt.compiler)
+
     implementation(libs.room.runtime)
     ksp(libs.room.compiler)
+}
+
+tasks.withType<KotlinCompile> {
+    compilerOptions {
+        freeCompilerArgs.add("-Xcontext-receivers")
+    }
 }
