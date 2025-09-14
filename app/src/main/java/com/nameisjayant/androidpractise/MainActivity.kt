@@ -4,7 +4,6 @@ import android.app.Activity
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
@@ -25,7 +24,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Modifier
@@ -39,34 +37,22 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
-import com.nameisjayant.androidpractise.ui.compose.AutoFillScreen
-import com.nameisjayant.androidpractise.ui.compose.BasicBuildAnnotated
-import com.nameisjayant.androidpractise.ui.compose.ClickableTextScreen
-import com.nameisjayant.androidpractise.ui.compose.TooltipScreen
+import com.nameisjayant.androidpractise.ui.performance.HighlightedSearch
+import com.nameisjayant.androidpractise.ui.performance.SearchLazyColumn
+import com.nameisjayant.androidpractise.ui.performance.TaggingInputUI
 import com.nameisjayant.androidpractise.ui.theme.AndroidPractiseTheme
 
 class MainActivity : ComponentActivity() {
     @RequiresApi(Build.VERSION_CODES.S)
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge(
-            statusBarStyle = SystemBarStyle.auto(
-                lightScrim = Color.Red.toArgb(),
-                darkScrim = Color.Red.toArgb()
-            ),
-        )
         setContent {
             AndroidPractiseTheme {
-                val navHostController = rememberNavController()
-                Scaffold { innerPadding ->
-                    CompositionLocalProvider(
-                        LocalNavigator provides navHostController
-                    ) {
-                        BasicBuildAnnotated(
-                            modifier = Modifier.padding(innerPadding)
-                        )
-                    }
+                Scaffold {
+                    TaggingInputUI(
+                        modifier = Modifier.padding(it)
+                    )
                 }
             }
         }

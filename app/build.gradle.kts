@@ -7,7 +7,8 @@ plugins {
     id("kotlin-parcelize")
     alias(libs.plugins.kotlin.serializable.pulgin)
     alias(libs.plugins.ksp)
-//    alias(libs.plugins.dagger.hilt)
+//  alias(libs.plugins.dagger.hilt)
+    id("org.jetbrains.dokka") version "2.0.0"
 }
 
 android {
@@ -90,5 +91,10 @@ dependencies {
 tasks.withType<KotlinCompile> {
     compilerOptions {
         freeCompilerArgs.add("-Xcontext-receivers")
+        freeCompilerArgs.add("-Xcontext-parameters")
     }
+}
+
+tasks.dokkaHtml.configure {
+    outputDirectory.set(buildDir.resolve("dokka"))
 }

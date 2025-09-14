@@ -5,7 +5,11 @@ fun main() {
     oldFunction()
 }
 
-@Deprecated("use newFunction() instead of", replaceWith = ReplaceWith("newFunction()"))
+@Deprecated(
+    "use newFunction() instead of",
+    replaceWith = ReplaceWith("newFunction()"),
+    level = DeprecationLevel.WARNING
+)
 fun oldFunction() {
     print("old function")
 }

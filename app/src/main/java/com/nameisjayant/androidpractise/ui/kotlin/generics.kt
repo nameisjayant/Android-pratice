@@ -1,7 +1,9 @@
 package com.nameisjayant.androidpractise.ui.kotlin
 
+import androidx.compose.runtime.Composable
 
-class Box(val type: Any)
+
+class Box(val type: @Composable Any)
 interface Box2<T> {
     fun consume(data: T)
 }
