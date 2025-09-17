@@ -37,6 +37,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.nameisjayant.androidpractise.ui.lazycolumnImplementations.ContactWithAlphabetSearchScreen
 import com.nameisjayant.androidpractise.ui.lazycolumnImplementations.ParallaxEffectScreen
 import com.nameisjayant.androidpractise.ui.performance.CreditCardScreen
 import com.nameisjayant.androidpractise.ui.theme.AndroidPractiseTheme
@@ -49,7 +50,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             AndroidPractiseTheme {
                 Scaffold {
-                    ParallaxEffectScreen(
+                    ContactWithAlphabetSearchScreen(
                         modifier = Modifier.padding(it)
                     )
                 }
