@@ -13,12 +13,12 @@ plugins {
 
 android {
     namespace = "com.nameisjayant.androidpractise"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.nameisjayant.androidpractise"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -46,9 +46,6 @@ android {
     }
     buildFeatures {
         compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
     }
     packaging {
         resources {
@@ -86,13 +83,6 @@ dependencies {
 
     implementation(libs.room.runtime)
     ksp(libs.room.compiler)
-}
-
-tasks.withType<KotlinCompile> {
-    compilerOptions {
-        freeCompilerArgs.add("-Xcontext-receivers")
-        freeCompilerArgs.add("-Xcontext-parameters")
-    }
 }
 
 tasks.dokkaHtml.configure {

@@ -1,19 +1,19 @@
 [versions]
 agp = "8.13.0"
-kotlin = "2.1.10"
-coreKtx = "1.15.0"
+kotlin = "2.2.20"
+coreKtx = "1.17.0"
 junit = "4.13.2"
-junitVersion = "1.2.1"
-espressoCore = "3.6.1"
-lifecycleRuntimeKtx = "2.8.7"
-activityCompose = "1.10.1"
-composeBom = "2025.08.01"
-navigation = "2.8.9"
-koltin-serializable = '1.6.3'
-room-db = '2.6.1'
-ksp = '2.0.21-1.0.27'
-coroutine = '1.9.0'
-daggerHilt = '2.56.2'
+junitVersion = "1.3.0"
+espressoCore = "3.7.0"
+lifecycleRuntimeKtx = "2.9.3"
+activityCompose = "1.11.0"
+composeBom = "2025.09.00"
+navigation = "2.9.4"
+koltin-serializable = '1.9.0'
+room-db = '2.8.0'
+ksp = '2.2.10-2.0.2'
+coroutine = '1.10.2'
+daggerHilt = '2.57.1'
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
